@@ -1,1 +1,3 @@
 jkcemu.jar usr/share/jkcemu
+src/images/icon/* usr/share/pixmaps/
+debian/jkcemu.desktop usr/share/applications/

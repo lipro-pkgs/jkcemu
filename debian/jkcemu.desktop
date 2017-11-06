@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+GenericName=JKCEMU
+Name=Java KC-Emulator
+Comment=Emulate amount of home computers made in the GDR
+Comment[de]=Emuliere die meisten in der der DDR hergestellten Heim- und Kleincomputer
+Exec=/usr/bin/jkcemu
+Icon=jkcemu50x50
+Type=Application
+Categories=System;Emulator;
