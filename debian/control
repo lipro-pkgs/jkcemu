@@ -3,7 +3,7 @@ Section: otherosfs
 Priority: optional
 Maintainer: Stephan Linz <linz@li-pro.net>
 Build-Depends: debhelper (>= 8), javahelper (>= 0.43)
-Build-Depends-Indep: default-jdk (>= 1:1.7), ant
+Build-Depends-Indep: default-jdk (>= 1:1.7), ant, python-docutils
 Standards-Version: 3.9.8
 Homepage: http://www.jens-mueller.org/jkcemu/
 

@@ -20,13 +20,69 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 # Put depended upon jars in here
 # export CLASSPATH=
 
+DISTRIBUTION_NAME = jkcemu
+
+package_working_root = debian
+package_install_root = debian/${DISTRIBUTION_NAME}
+package_document_root = debian/${DOCDIR}
+
+DOCDIR = doc
+MANPAGE_SUFFIX = .1
+manpage_tempfile_suffix = ${MANPAGE_SUFFIX}.tmp
+jkcemu_manpage = jkcemu${MANPAGE_SUFFIX}
+jkcemu_manpage_path = $(addprefix ${DOCDIR}/,${jkcemu_manpage})
+GENERATED_DIRS += ${DOCDIR}
+
+INSTALL = install
+
 # Send HTTP traffic to the “discard” service during packaging actions.
 export http_proxy = http://127.0.1.1:9/
 export https_proxy = ${http_proxy}
 
+RST_SUFFIX = .txt
+RST2MAN = rst2man
+
 
 %:
 	dh $@ --with javahelper --buildsystem=ant
+
+
+override_dh_auto_build:
+	$(Q)dh_auto_build -pjkcemu --buildsystem=ant -- jar
+
+
+override_dh_installman:
+	$(Q)dh_installman
+
+override_dh_installman: manpage-aliases
+
+
+override_dh_clean:
+	$(Q)dh_clean
+	$(Q)$(RM) -r -- ${GENERATED_DIRS}
+
+
+${GENERATED_DIRS}:
+	$(INSTALL) -m 755 -d "$@"
+
+
+.PHONY: manpage-aliases
+manpage-aliases: ${jkcemu_manpage_path}
+
+${DOCDIR}/${jkcemu_manpage}: ${DOCDIR}
+
+${DOCDIR}/%${MANPAGE_SUFFIX}: ${package_document_root}/%${MANPAGE_SUFFIX}
+	$(INSTALL) -m 644 "$<" "$@"
+
+%${MANPAGE_SUFFIX}: %${manpage_tempfile_suffix}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)cat \
+	    ${package_document_root}/manpage_encoding_declaration.UTF-8 \
+	    "$<" > "$@"
+
+%${manpage_tempfile_suffix}: %${MANPAGE_SUFFIX}${RST_SUFFIX}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)$(RST2MAN) "$<" > "$@"
 
 
 .PHONY: get-packaged-orig-source
@@ -57,8 +113,20 @@ define uscan-download-source
 endef # uscan-download-source
 
 
-override_dh_auto_build:
-	dh_auto_build -pjkcemu --buildsystem=ant -- jar
+ifeq ($(DH_VERBOSE),1)
+  quiet =
+  Q =
+  VO = -v
+else
+  quiet=quiet_
+  Q = @
+  VO =
+endif
+
+       dh_echo := :
+ quiet_dh_echo := echo
+silent_dh_echo := :
+dh_echo := $($(quiet)dh_echo)
 
 
 # Local variables:

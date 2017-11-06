@@ -1,0 +1,596 @@
+======
+jkcemu
+======
+
+---------------------------------------------------------
+an Z80 home and minicomputer emulator with sound/graphics
+---------------------------------------------------------
+
+:Author: |author|
+:Date: 2017-11-06
+:Copyright:
+    Copyright © 2008–2017 Jens Mueller <jens@mueller-franke.de>
+    Copyright © 2017 Stephan Linz <linz@li-pro.net>
+:Version: 0.1
+:Manual section: 1
+:Manual group: Emulator
+
+..  |command| replace:: ``jkcemu``
+..  |license| replace::
+    `GNU General Public License, version 3
+    <http://www.gnu.org/licenses/gpl-3.0>`__
+
+
+SYNOPSIS
+========
+
+| |command| [ `PROFILE` ]
+| |command| `FUNCTION` [ `OPTIONS` ... ]
+| |command| ``--help``
+| |command| ``--version``
+
+
+DESCRIPTION
+===========
+
+|command| is an integrated emulator application that allows one to run
+most of the old home and minicomputer operating systems made in the GDR.
+The emulation supports a number of additional hardware, e.g. floppy
+disk drives, extended graphic modules, Joysticks and specific
+network and USB adapters.
+
+While running |command| a lot of help can be obtained from the in-line
+help system. The corresponding menu item can be found in the |command|
+main window, menu **?**, **Help...**.
+
+If the `PROFILE` or `FUNCTION` is missing, the emulator will start with
+emulation of the system that is specified in the default standard profile.
+If there is no standard profile, the emulator will start with emulation
+of the first known system in alphabetical order; currently ``A5105 (BIC)``.
+
+If the first argument starts with a minus sign, it is not interpreted as a
+name of a `PROFILE`, but as a `FUNCTION` or a global option. See `function
+overview` and `global options` to get a list of possibilities. Some `FUNCTION`
+require additional `OPTIONS`. These are described under the section `function
+reference`.
+
+
+FUNCTION OVERVIEW
+=================
+
+``--ar`` | ``--audiorecorder``
+    Start the `JKCEMU audio recording tool`.
+
+``--as`` | ``--assembler``
+    Start the `JKCEMU Z80 Assembler`.
+
+``--bc`` | ``--basiccompiler``
+    Start the `JKCEMU BASIC-Compiler`.
+
+``--ca`` | ``--calculator``
+    Start the `JKCEMU programmer calculation tool`.
+
+``--dc`` | ``--diskcreator``
+    Start the `JKCEMU Floppy Disk image creation tool`.
+
+``--dv`` | ``--diskviewer``
+    Start the `JKCEMU Floppy Disk image inspection tool`.
+
+``--fb`` | ``--filebrowser``
+    Start the `JKCEMU file browsing tool`.
+
+``--fc`` | ``--fileconverter``
+    Start the `JKCEMU file convertion tool`.
+
+``--ff`` | ``--findfiles``
+    Start the `JKCEMU file search and finding tool`.
+
+``--hd`` | ``--hexdiff``
+    Start the `JKCEMU hexadecimal file comparing tool`.
+
+``--he`` | ``--hexeditor``
+    Start the `JKCEMU hexadecimal file editing tool`.
+
+``--iv`` | ``--imageviewer``
+    Start the `JKCEMU image viewing tool`.
+
+``--te`` | ``--texteditor``
+    Start the `JKCEMU file editing tool`.
+
+
+GLOBAL OPTIONS
+==============
+
+``-h`` | ``--help`` | ``-?``
+    Describe how to use JKCEMU, in general or a function.
+
+``-v`` | ``--version``
+    Output version information and exit. Useful for frontends.
+
+
+FUNCTION REFERENCE
+==================
+
+JKCEMU audio recording tool
+---------------------------
+
+| |command| ``--ar`` | ``--audiorecorder``
+
+This will start the **JKCEMU audio recording tool**.
+
+JKCEMU Z80 Assembler
+--------------------
+
+| |command| ``--as`` | ``--assembler`` [ `OPTIONS` ... ] [ `FILE` ]
+
+This will start the **JKCEMU Z80 Assembler**.
+
+OPTIONS
+
+    -h
+        Describe how to use the internal Z80 Assembler.
+
+    -f `FILE`
+        Read command line arguments from `FILE`.
+
+    -l
+        Generate table of all labels and write out.
+
+    -o `FILE`
+        Set output file to `FILE`.
+
+    -9
+        Generate output file compatible to Z9001, KC85/1 and KC87.
+
+    -C
+        Labels are case sensitive.
+
+    -D `LABEL`
+        Predefine label `LABEL`, with definition -1 (all bits set).
+
+    -D `LABEL=VALUE`
+        Predefine label `LABEL`, with definition `VALUE`.
+
+    -U
+        Enable support for undocumented op-codes.
+
+    -R
+        Restrict to understand only Robotron syntax.
+
+    -Z
+        Restrict to understand only Zilog syntax.
+
+The **JKCEMU Z80 Assembler** is full integrated into the |command|
+application and primarily intended to assemble programs that will written
+with the as well integrated text editor (see `JKCEMU file editing tool`)
+and so profit from the short turn-around-time to load and execute the
+program code directly inside the selected emulation environment. In
+addition, the emulator also offers this command line interface to
+assemble already written program code in `FILE`. This also helps for
+batch processing in scripts.
+
+Assembler Directives
+
+|command| supports different syntax of assembler mnemonic, the original
+**Zilog** and the slitly different **Robotron** syntax. Each version has
+much in common with the others, including labels, most assembler directives
+(often called `pseudo-ops`) and undocumented op-codes. Primarily the
+assembler will support mnemonic with both syntax, Zilog and Robotron, but
+no undocumented op-codes. To restrict the assembler to understand only one
+version of the different syntax, you can use the option ``-Z`` for **Zilog**
+and ``-R`` for **Robotron**. To enable syntax for **undocumented op-codes**
+use option ``-U``.
+
+All mnemonics and registers are case insensitive. All other text (in
+particular, labels) ary only case sensitive when option ``-C`` is set.
+
+pseudo-ops syntax:
+
+    **BINCLUDE** '`FILE.BIN`'
+        Include the binary file `FILE.BIN` into the resulting assembled file.
+
+    **CPU** `U880` or `Z80`
+        Defines the processor type, either `U880` or `Z80`.
+
+    **DEFB** or **DB** `byte`, `byte`, `byte`, ...
+        Define bytes. Generate data bytes and insert into the resulting
+        assembled file.
+
+    **DEFH** or **DFH** or **HEX** `hex`, `hex`, `hex`, ...
+        Define bytes. Generate data bytes and insert into the resulting
+        assembled file.
+
+    **DEFM** or **DFB** '`string`', `byte`, '`string`', `byte`, ...
+        Define message. Generate data bytes and insert into the resulting
+        assembled file.
+
+    **DEFS** or **DFS** or **DS** `count` [, `value` ]
+        Define space. Reserve `count` number of data bytes and insert into
+        the resulting assembled file. Each of them is initialised to the
+        specified `value`, or 0 if no value is specified.
+
+    **DEFW** or **DFW** or **DW** or **DA** `word`, `word`, `word`, ...
+        Define words. Generate data word and insert into the resulting
+        assembled file. Each argument is stored as two bytes, the low
+        order byte first.
+
+    **END**
+        End assembly of this source file. Any remaining lines are copied
+        into the list file (if present), but not assembled.
+
+    **ENT** `addr`
+        Entry assembly of this source file. The given address `addr` will
+        be used as start address.
+
+    **EQU** `expression`
+        Define label to have value `expression`.
+
+    **INCLUDE** '`FILE.ASC`'
+        Include the ASCII file `FILE.ASC` into the source file.
+
+    **ORG** `addr`
+        Set the program counter to `addr`. This does not add any bytes to the
+        resulting assembled file, it only determines how the rest of the code
+        is interpreted (in particular, the value of labels and **$**).
+
+    **Z80**
+        Defines the processor type, `Z80`. This pseudo-op is for compatibility
+        only and is the same as **CPU Z80**.
+
+**Zilog** and **Robotron** assembler mnemonics:
+
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | **Zilog**    | **Robotron** || **Zilog**    | **Robotron** || **Zilog**    | **Robotron** |
+    +==============+==============++==============+==============++==============+==============+
+    | CALL Z       | CAZ          || JP Z         | JPZ          || RET Z        |  RZ          |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL NZ      | CANZ         || JP NZ        | JPNZ         || RET NZ       |  RNZ         |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL C       | CAC          || JP C         | JPC          || RET C        |  RC          |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL NC      | CANC         || JP NC        | JPNC         || RET NC       |  RNC         |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL PE      | CAPE         || JP PE        | JPPE         || RET PE       |  RPE         |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL PO      | CAPO         || JP PO        | JPPO         || RET PO       |  RPO         |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL M       | CAM          || JP M         | JPM          || RET M        |  RM          |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CALL P       | CAP          || JP P         | JPP          || RET P        |  RP          |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | CP           | CMP          || JR Z         | JRZ          ||              |              |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | EX AF,AF'    | EXAF         || JR NZ        | JRNZ         ||              |              |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    |              | INF          || JR C         | JRC          ||              |              |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+    | JP           | JMP          || JR NC        | JRNC         ||              |              |
+    +--------------+--------------++--------------+--------------++--------------+--------------+
+
+Undocumented op-codes are as much as possible supported:
+
+    * **SLL** and **SLI** are equal and can both be used.
+    * **IXH**, **IXL**, **IYH** and **IYL** can be used.
+    * Robotron **INF**, aka Zilog **IN F,(C)** or **IN (C)** can be used.
+
+JKCEMU BASIC-Compiler
+---------------------
+
+| |command| ``--bc`` | ``--basiccompiler`` [ `OPTIONS` ... ] [ `FILE` ]
+
+This will start the **JKCEMU BASIC-Compiler**.
+
+OPTIONS
+
+    -h
+        Describe how to use the internal BASIC-Compiler.
+
+    -f `FILE`
+        Read command line arguments from `FILE`.
+
+    -g
+        In case of abort due to an error, issue line number.
+
+    -o `FILE`
+        Set output file to `FILE`.
+
+    -t `SYSTEM`
+        Compile for a specific type of system as selected by `SYSTEM`.
+        This option is mandatory and must be specified. Allowed for
+        `SYSTEM` is: ``AC1``, ``CPM``, ``HUEBLER``, ``KC85``, ``KC85_4``,
+        ``KRAMER``, ``LLC2_HIRES``, ``SCCH``, ``Z1013``, ``Z1013_64X16``,
+        ``Z9001``, ``Z9001_KRT``
+
+    -A `ADDR`\ [\ :\ `BSS_ADDR`\ ]
+        Set the start address of the resulting program code to `ADDR` and
+        if applicable the start address of the block-storage-segment (BSS)
+        for variables and stack to `BSS_ADDR`. If the option is missing,
+        the following initial start address applies depending on the
+        selected target system (see: ``-t`` `SYSTEM`):
+
+            * ``0100h`` for CPM, HUEBLER, Z1013 and Z1013_64X16
+            * ``0300h`` for KC85, KC85_4, Z9001 and Z9001_KRT
+            * ``1000h`` for KRAMER
+            * ``2000h`` for SCCH und LLC2_HIRES
+
+    -D `DRIVER`\ [\ ,\ `DRIVER`\ ,\ ...]
+        Determine which drivers to use. If the option is missing, only
+        meaningful drivers will bind into the resulting program code.
+        Allowed for `DRIVER` is:
+
+            * ``CRT``  console in- and output
+            * ``LPT``  list printer output
+            * ``FILE`` file in- and output
+            * ``VDIP`` Vinculum VDIP modul (USB mass storage)
+
+    -L `LANG`
+        Set output language of the resulting compiled program to `LANG`.
+        Allowed for `LANG` is the ISO code:
+
+            * ``de`` for German characters (default)
+            * ``en`` for English characters
+
+    -M `SIZE`
+        Set stack size to `SIZE`. Zero (0) means system stack usage, no
+        application stack.
+
+    -N `NAME`
+        Set application name of the resulting compiled program to `NAME`.
+        Only relevant for KC85, HUEBLER, Z9001 and Z9001_KRT
+
+    -B\ `n`
+        Set programs abort option level to `n`. If the option is missing,
+        ``-B2`` is automatically assumed. See `Options to set the abort
+        option` to find out which number for `n` is allowed.
+
+    -O\ [`n`]
+        Set compiler optimization level to `n`. If the option is missing,
+        ``-O0`` automatically assumed. See `Options for program code
+        optimization` to find out which number for `n` is allowed.
+
+    -S
+        Stop after the stage of compilation proper; do not assemble. The output
+        is in the form of an assembler code file for each non-assembler input
+        file specified. The output file always has the format of a simple text
+        file, regardless of its file name suffix.
+
+    -T `SIZE`
+        Set size of string memory to `SIZE`.
+
+    -W `KEY`
+        Enable or disable warnings. See `Options for warnings` to find out
+        which key word for `KEY` is allowed.
+
+The **JKCEMU BASIC-Compiler** is full integrated into the |command| application
+and primarily intended to compile BASIC programs that will written with the as
+well integrated text editor (see `JKCEMU file editing tool`). In addition, the
+emulator also offers this command line interface to compile already written
+program code in `FILE` for specified type of `SYSTEM`.
+
+Options to set the abort option:
+
+    -B0
+        CTRL-C does not cancel program.
+
+    -B1
+        CTRL-C aborts the program only on input.
+
+    -B2
+        CTRL-C always aborts the program (default, slow because of polling!).
+
+Options for program code optimization (``-O`` corresponds to ``-O2``):
+
+    -O0
+        All runtime checks active (default).
+
+    -O1
+        Disable stack inspection.
+
+    -O2
+        Additionally disable field inspections.
+
+    -O3
+        Additionally give preference to relative jumps.
+
+Options for warnings:
+
+    -W all
+        Enable all warnings (default).
+
+    -W none
+        Disable all warnings.
+
+    -W nonascii
+        Warn for non-ASCII characters.
+
+    -W unused
+        Warn for unused functions, procedures, and variables.
+
+JKCEMU programmer calculation tool
+----------------------------------
+
+| |command| ``--ca`` | ``--calculator``
+
+This will start the **JKCEMU programmer calculation tool**.
+
+JKCEMU Floppy Disk image creation tool
+--------------------------------------
+
+| |command| ``--dc`` | ``--diskcreator``
+
+This will start the **JKCEMU Floppy Disk image creation tool**.
+
+JKCEMU Floppy Disk image inspection tool
+----------------------------------------
+
+| |command| ``--dv`` | ``--diskviewer``
+
+This will start the **JKCEMU Floppy Disk image inspection tool**.
+
+JKCEMU file browsing tool
+-------------------------
+
+| |command| ``--fb`` | ``--filebrowser``
+
+This will start the **JKCEMU file browsing tool**.
+
+JKCEMU file convertion tool
+---------------------------
+
+| |command| ``--fc`` | ``--fileconverter`` [ `FILE` ]
+
+This will start the **JKCEMU file convertion tool**.
+
+JKCEMU file search and finding tool
+-----------------------------------
+
+| |command| ``--ff`` | ``--findfiles`` [ `DIRECTORY` ]
+
+This will start the **JKCEMU file search and finding tool**.
+
+JKCEMU hexadecimal file comparing tool
+--------------------------------------
+
+| |command| ``--hd`` | ``--hexdiff`` [ `FILE` [ ... ] ]
+
+This will start the **JKCEMU hexadecimal file comparing tool**.
+
+JKCEMU hexadecimal file editing tool
+------------------------------------
+
+| |command| ``--he`` | ``--hexeditor`` [ `FILE` ]
+
+This will start the **JKCEMU hexadecimal file editing tool**.
+
+JKCEMU image viewing tool
+-------------------------
+
+| |command| ``--iv`` | ``--imageviewer`` [ `FILE` ]
+
+This will start the **JKCEMU image viewing tool**.
+
+JKCEMU file editing tool
+------------------------
+
+| |command| ``--te`` | ``--texteditor`` [ `FILE` ]
+
+The **JKCEMU file editing tool** is designed for the needs of the emulator in
+contrast to a pure text editor. Thus, on the one hand, it provides access to
+the `JKCEMU Z80 Assembler` and the `JKCEMU BASIC-Compiler`, and on the other
+hand, it can deal with the customary character sets and partly with the
+special file formats of the emulated systems. Old file formats are supported
+in the form that EDAS*4 assembler source files and various BASIC program files
+are used to extract the respective sources and to provide it in the form of a
+new text file.
+
+The text editor is able to read files of the emulated systems and extract the
+text possible contained in them. This is then displayed as a new text file.
+If this text is saved, you have converted the file into a text file format
+that is common today.
+
+Specifically, the editor can extract texts from the following file types:
+
+    * BASIC program file of the following BASIC interpreters:
+
+        * AC1 8K BASIC
+        * AC1 12K BASIC
+        * AC1 BASIC6
+        * AC1 BACOBAS 2 (only normal mode, no BASICODE)
+        * AC1 BACOBAS 3 (only normal mode, no BASICODE)
+        * Huebler/Grafik-MC BASIC
+        * Kramer-MC BASIC
+        * LLCBASIC (only normal mode, no BASICODE)
+
+    * Headersave file with file type "A" if the file contains EDAS*4
+      assembler source code.
+    * Headersave file with data type "B" (BASIC program of one of the
+      BASIC interpreters mentioned above).
+    * Headersave file with data type "b" (Mini-/Tiny BASIC):
+
+        * AC1 Mini-BASIC V2.1
+        * LLC1-BASIC V1.2
+        * Z1013 BASIC 3.01
+
+    * Headersave file with file type "I" or "T" if the file contains
+      a text file. The hexadecimal value 1E is also supported as a line end.
+    * KCB file.
+    * KC-BASIC program file.
+    * KC-TAP file, if the bytes contained therein correspond to the format
+      of a KC-BASIC program file. Often, KC-BASIC programs are not stored
+      as KC-BASIC program files, but as KC-System files to enable autostart.
+      These files can not be opened directly in the text editor, but you can
+      load these files into the emulator and extract the BASIC program from
+      the memory (see in-line help system, **Tips and Tricks**).
+
+
+PROFILES
+========
+
+|command| is able to save its program settings as profiles. Saving is only
+possible from within the program, there is no command line support. If the
+name of such a profile is specified as `PROFILE` when the emulator is
+started, |command| starts with these settings. Otherwise, the emulator tries
+to load the profile with the special name **standard** from the |command|
+`configuration directory`. You should therefore save your most frequently
+used settings under this name.
+
+A profile can also be applied after the emulator has started. The
+corresponding menu item can be found in the |command| main window, menu
+**Extra**, **Settings...**, button **Load profile...**
+
+
+CONFIGURATION DIRECTORY
+=======================
+
+
+|command| stores its settings and profiles in the configuration directory.
+The emulator evaluates the environment variable `APPDATA` to determine this
+directory. If this environment variable is not set, the location for your
+own files is used. For Linux this is in the home directory: **~/.jkcemu**
+
+See `environment variables` for more details about `APPDATA`.
+
+
+ENVIRONMENT VARIABLES
+=====================
+
+``APPDATA``
+
+    Path to the `configuration directory` where |command| settings and
+    `PROFILE` files are stored. Default: **~/.jkcemu** in the users home
+    directory.
+
+
+HISTORY
+=======
+
+The |command| command is a link to the related Java JAR file which contains
+all Java classes, ROM and Floppy Disk images of the emulator to do all the
+work.
+
+The emulator was originally developed by Jens Mueller.
+
+This manual page was written to document the |command| command for
+Debian. This is free software: you may copy, modify and/or distribute
+this work under the terms of the |license| as published by the Free
+Software Foundation. No warranty expressed or implied.
+
+On Debian systems, the complete text of version 3 of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL-3`.
+
+..  |author| replace:: |authorname| |authoremail|
+..  |authorname| replace:: Stephan Linz
+..  |authoremail| replace:: <linz@li-pro.net>
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    time-stamp-format: "%:y-%02m-%02d"
+    time-stamp-start: "^:Date:[         ]+"
+    time-stamp-end: "$"
+    time-stamp-line-limit: 20
+    End:
+    vim: fileencoding=utf-8 filetype=rst :
