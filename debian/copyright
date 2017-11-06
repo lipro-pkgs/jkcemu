@@ -4,6 +4,15 @@ Debianized-Date: Sun, 05 Nov 2017 20:09:15 +0100
 Upstream-Name: JKCEMU - Kleincomputer-Emulator
 Upstream-contact: Jens Mueller <jens@mueller-franke.de>
 Source: http://www.jens-mueller.org/jkcemu/download.html
+    The pristine upstream source may contain obfuscated files, that are
+    thereby not appropriate for use as source files. This violates DFSG §2.
+    .
+    The 'debian/repack' program will removes those files to create the Debian
+    upstream source tarball.
+    .
+    The orig.tar.xz is just repacked Debian upstream source tarball
+    (currently without changes). See section get-orig-source in 'debian/rules'
+    file and array nonfree_fileglobs in 'debian/repack' file for details.
 
 Files: *
 Copyright:
