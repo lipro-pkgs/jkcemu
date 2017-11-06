@@ -12,11 +12,11 @@ Architecture: all
 Depends: ${java:Depends}, ${misc:Depends}
 Recommends: ${java:Recommends}
 Description: Java KC-Emulator
- JKCEMU is an integrated emulator application that allows one to run
- most of the old home and minicomputer operating systems made by GDR.
- The emulation supports a number of additional hardware, e.g. floppy
- disk drives, extended graphic modules, Joysticks and specific
- network and USB adapters.
+ JKCEMU is an integrated emulator application that allows one to
+ run most of the old home and minicomputer operating systems made
+ in the GDR. The emulation supports a number of additional hardware,
+ e.g. floppy disk drives, extended graphic modules, Joysticks and
+ specific network and USB adapters.
  .
  Supported computers:
   - A5105 (BIC, ALBA PC)

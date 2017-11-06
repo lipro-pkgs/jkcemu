@@ -1,0 +1,15 @@
+Document: jkcemu
+Title: Java KC-Emulator
+Author: Jens Mueller <jens@mueller-franke.de>
+Abstract: Java KC-Emulator is an integrated emulator
+ application that allows one to run most of the old home and minicomputer
+ operating systems made in the GDR. This manual describes these emulator,
+ and also the emulator features and addons.
+Section: Emulators
+
+Format: text
+Files: /usr/share/doc/jkcemu/README.txt.gz
+
+Format: HTML
+Index: /usr/share/doc/jkcemu/README.html
+Files: /usr/share/doc/jkcemu/README.html
