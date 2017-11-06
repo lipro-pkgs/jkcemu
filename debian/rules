@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+#
+# debian/rules
+# Part of the Debian ‘jkcemu’ package.
+#
+# Copyright © 2017 Stephan Linz <linz@li-pro.net>
+#
+# This is free software; you may copy, modify, and/or distribute this
+# work under the terms of the Apache License, version 2.0 as published
+# by the Apache Software Foundation. No warranty expressed or implied.
+# See the file ‘/usr/share/common-licenses/Apache-2.0’ for details.
+
+export DH_VERBOSE=1
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+# Put depended upon jars in here
+# export CLASSPATH=
+
+%:
+	dh $@ --with javahelper --buildsystem=ant
+
+
+override_dh_auto_build:
+	dh_auto_build -pjkcemu --buildsystem=ant -- jar
+
+
+# Local variables:
+# mode: makefile
+# coding: utf-8
+# End:
+# vim: filetype=make fileencoding=utf-8 :

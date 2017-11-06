@@ -1,0 +1,3 @@
+usr/share/jkcemu/jkcemu.jar:
+ Debian-Java-Home: /usr/lib/jvm/default-java
+ Debian-Java-Parameters: 
