@@ -13,7 +13,8 @@
 
 # based on: https://notabug.org/bignose/debian_python-coverage
 
-export DH_VERBOSE=1
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
 
 export JAVA_HOME=/usr/lib/jvm/default-java
 

@@ -1,0 +1,57 @@
+To Do list for Debian packaging
+###############################
+
+:Author: Stephan Linz <linz@li-pro.net>
+:Last-Updated: 2017-11-09
+
+To Do
+=====
+
+* Enable upstream for static code analysis (lint) using `jlint`
+
+  * Add `jlint` Build-Depends.
+  * Enable `debian/rules` to build run Java Program Checker.
+
+* Enable upstream test suite for the Z80 assembler using parts from the
+  macroassembler AS by Alfred Arnold also known as Arnold-Assembler_.
+
+  * Extend the upstream project with the test pattern.
+  * Add `test` target to the Java build system.
+  * Enable `debian/rules` to run test suite.
+
+* Enable upstream test suite for the Z80 emulation using Frank Cringle's Z80
+  instruction set exerciser (ZEX_) from the famous YAZE_ project or rather
+  YAZE-AG_. There is a good online abstract by Jeff Avery at
+  http://www.jeffavery.ca/computers/macintosh-z80exerciser.html
+
+  * Extend the upstream project with the test pattern.
+  * Expand or add `test` target to the Java build system.
+  * Enable `debian/rules` to run test suite.
+
+* Build binary package for upstream documentation.
+
+  * Enable `debian/rules` to build using Javadoc.
+
+* Add support for `functional testing of Debian packages`_ with `autopkgtest`.
+
+.. _Arnold-Assembler: http://john.ccac.rwth-aachen.de:8000/as/
+.. _ZEX: http://mdfs.net/Software/Z80/Exerciser/
+.. _YAZE: ftp://ftp.ping.de/pub/misc/emulators/
+.. _YAZE-AG: http://www.mathematik.uni-ulm.de/users/ag/yaze-ag/
+
+
+Done
+====
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    time-stamp-format: "%:y-%02m-%02d"
+    time-stamp-start: "^:Last-Updated:[ 	]+"
+    time-stamp-end: "$"
+    time-stamp-line-limit: 20
+    End:
+    vim: fileencoding=utf-8 filetype=rst :
