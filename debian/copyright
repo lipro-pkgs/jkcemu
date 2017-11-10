@@ -52,7 +52,7 @@ License-Grant:
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 Comment:
-    Informations about the CopyQM-Format and the CRC table content derived
+    Information about the CopyQM-Format and the CRC table content derived
     from the LIBDSK project. Distributed under GPL-2+ license. See file
     doc/COPYING for detail in the libdsk-1.4.2 source package:
     http://www.seasip.info/Unix/LibDsk/libdsk-1.4.2.tar.gz
@@ -115,8 +115,8 @@ License-Grant:
     under the terms of the Apache License, version 2.0 as published by the
     Apache Software Foundation. No warranty expressed or implied.
 
-Files: disks/a5105/*
-       rom/a5105/*
+Files: src/disks/a5105/*
+       src/rom/a5105/*
 Copyright:
     © 1989–1990 VEB Messelektronik Dresden
     © 1989 Dr. Hans-Juergen Gatsche
@@ -124,7 +124,7 @@ Copyright:
     © 2001–2014 Ulrich Zander
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM and disk image content
+    Authorship of different ROM and disk image content
     .
     A5105 (BIC, ALBA PC):
         VEB Messelektronik Dresden
@@ -138,14 +138,14 @@ Comment:
     http://www.jens-mueller.org/jkcemu/a5105.html#software
     http://www.jens-mueller.org/jkcemu/a5105.html#disks
 
-Files: rom/ac1/*
+Files: src/rom/ac1/*
 Copyright:
     © 1983–1989 Frank Heyder
     © 1988–1990 Eckhard Ludwig
     © 2006–2010 Andreas Suske
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM image content for the
+    Authorship of different ROM image content for the
     .
     AC1 and AC1-2010:
         Frank Heyder (monitor program 3.1 and MiniBASIC)
@@ -157,13 +157,13 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/ac1.html#software
 
-Files: rom/bc3/*
+Files: src/rom/bcs3/*
 Copyright:
     © 1984–1987 Dipl.-Math. Eckhard Schiller
     © 1986–1987 Frank Pruefer, Torsten Musiol
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     BCS 3:
         Dipl.-Math. Eckhard Schiller
@@ -175,12 +175,12 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/bcs3.html#software
 
-Files: rom/c80/*
+Files: src/rom/c80/*
 Copyright:
     © 1986 Joachim Czepa
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     C-80:
         Joachim Czepa
@@ -190,12 +190,12 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/c80.html#software
 
-Files: rom/customsys/*
+Files: src/rom/customsys/*
 Copyright:
     © 2016–2017 Jens Mueller <jens@mueller-franke.de>
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     customized system:
         Jens Mueller
@@ -205,13 +205,13 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/customsys.html#screen
 
-Files: rom/huebler/*
+Files: src/rom/huebler/*
 Copyright:
     © 1984–1985 Klaus-Peter Evert †
     © 1984–1988 Bernd Huebler
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     Huebler/Evert-MC:
         Klaus-Peter Evert (electronica 227/228)
@@ -226,8 +226,8 @@ Comment:
     http://www.jens-mueller.org/jkcemu/hemc.html
     http://www.jens-mueller.org/jkcemu/hgmc.html#2
 
-Files: disks/kc85/*
-       rom/kc85/*
+Files: src/disks/kc85/*
+       src/rom/kc85/*
 Copyright:
     © 1984–1989 VEB Mikroelektronik Muehlhausen
     © 1985–1988 University Rostock
@@ -236,7 +236,7 @@ Copyright:
     © 2007–2016 Ralf Kaestner
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM and disk image content for the
+    Authorship of different ROM and disk image content for the
     .
     HC900:
         VEB Mikroelektronik Muehlhausen
@@ -259,8 +259,8 @@ Comment:
     http://www.jens-mueller.org/jkcemu/kc85.html#software
     http://www.jens-mueller.org/jkcemu/kc85.html#disks
 
-Files: disks/kccompact/*
-       rom/kccompact/*
+Files: src/disks/kccompact/*
+       src/rom/kccompact/*
 Copyright:
     © 1985–1990 Amstrad plc
     © 1989–1990 VEB Mikroelektronik Muehlhausen
@@ -268,7 +268,7 @@ Copyright:
     © 1985–1987 IRIMS Moscow
 License: public-domain with JKCEMU exception and amstrad-public-domain
 Comment:
-    Authorship of differnet ROM and disk image content for the
+    Authorship of different ROM and disk image content for the
     .
     KC-compact:
         VEB Mikroelektronik Muehlhausen
@@ -288,12 +288,12 @@ Comment:
     http://www.jens-mueller.org/jkcemu/kccompact.html#fdcrom
     http://www.jens-mueller.org/jkcemu/kccompact.html#disks
 
-Files: rom/kramermc/*
+Files: src/rom/kramermc/*
 Copyright:
     © 1987–1989 Manfred Kramer <dl2kmk@darc.de>
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     Kramer-MC:
         Manfred Kramer
@@ -303,13 +303,13 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/kramermc.html#software
 
-Files: rom/lc80/*
+Files: src/rom/lc80/*
 Copyright:
     © 1982–1987 VEB Mikroelektronik Erfurt
     © 1989–1991 Eckart Buschendorf
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     LC-80:
         VEB Mikroelektronik Erfurt
@@ -320,12 +320,12 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/lc80.html#software
 
-Files: rom/llc1/*
+Files: src/rom/llc1/*
 Copyright:
     © 1984–1985 Dr. Gerd Maudrich
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     LLC1:
         Dr. Gerd Maudrich
@@ -335,13 +335,13 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/llc1.html#software
 
-Files: rom/llc2/*
+Files: src/rom/llc2/*
 Copyright:
     © 1984–1985 Dr. Gerd Maudrich
     © 1988–1990 Eckhard Ludwig
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     LLC2:
         Dr. Gerd Maudrich
@@ -352,8 +352,8 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/llc2.html#software
 
-Files: disks/nanos/*
-       rom/nanos/*
+Files: src/disks/nanos/*
+       src/rom/nanos/*
 Copyright:
     © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
     © 1985–1990 VEB Datenverarbeitungszentrum Rostock
@@ -363,7 +363,7 @@ Copyright:
     © 2016–2017 Jens Mueller <jens@mueller-franke.de>
 License: public-domain with JKCEMU exception and lineo-cpm-osl
 Comment:
-    Authorship of differnet ROM and disk image content for the
+    Authorship of different ROM and disk image content for the
     .
     NANOS:
         School of Engineering for Seafaring, Warnemuende/Wustrow
@@ -390,8 +390,8 @@ Comment:
     http://www.jens-mueller.org/jkcemu/nanos.html#software
     http://www.jens-mueller.org/jkcemu/nanos.html#disks
 
-Files: disks/pcm/*
-       rom/pcm/*
+Files: src/disks/pcm/*
+       src/rom/pcm/*
 Copyright:
     © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
     © 1986–1989 Academy of Sciences of the GDR
@@ -399,7 +399,7 @@ Copyright:
     © 1988–1991 Herbert Mathes
 License: public-domain with JKCEMU exception and lineo-cpm-osl
 Comment:
-    Authorship of differnet ROM and disk image content for the
+    Authorship of different ROM and disk image content for the
     .
     PC/M:
         Prof. Dr. Albrecht Mugler
@@ -424,12 +424,12 @@ Comment:
     http://www.jens-mueller.org/jkcemu/pcm.html#software
     http://www.jens-mueller.org/jkcemu/pcm.html#disks
 
-Files: rom/poly880/*
+Files: src/rom/poly880/*
 Copyright:
     © 1982–1986 VEB Polytechnik Karl-Marx-Stadt
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     Poly-Computer 880:
         VEB Polytechnik Karl-Marx-Stadt
@@ -439,12 +439,12 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/poly880.html#software
 
-Files: rom/sc2/*
+Files: src/rom/sc2/*
 Copyright:
     © 1981–1983 VEB Mikroelektronik Erfurt
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     Schachcomputer SC2:
         VEB Mikroelektronik Erfurt
@@ -454,12 +454,12 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/sc2.html#etc
 
-Files: rom/slc1/*
+Files: src/rom/slc1/*
 Copyright:
     © 1989 Dr. Dieter Scheuschner
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     SLC1:
         Dr. Dieter Scheuschner
@@ -469,12 +469,12 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/slc1.html#software
 
-Files: rom/vcs80/*
+Files: src/rom/vcs80/*
 Copyright:
     © 1983–1984 Dipl.-Math. Eckhard Schiller
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     VCS 80:
         Dipl.-Math. Eckhard Schiller
@@ -484,8 +484,8 @@ Comment:
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/vcs80.html#software
 
-Files: disks/z1013/*
-       rom/z1013/*
+Files: src/disks/z1013/*
+       src/rom/z1013/*
 Copyright:
     © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
     © 1984–1990 VEB Robotron-Elektronik Riesa
@@ -493,7 +493,7 @@ Copyright:
     © 2008–2011 Jens Mueller <jens@mueller-franke.de>
 License: public-domain with JKCEMU exception and lineo-cpm-osl
 Comment:
-    Authorship of differnet ROM and disk image content for the
+    Authorship of different ROM and disk image content for the
     .
     Z1013:
         VEB Robotron-Elektronik Riesa
@@ -512,8 +512,8 @@ Comment:
     http://www.jens-mueller.org/jkcemu/z1013.html#software
     http://www.jens-mueller.org/jkcemu/z1013.html#disks
 
-Files: disks/z9001/*
-       rom/z9001/*
+Files: src/disks/z9001/*
+       src/rom/z9001/*
 Copyright:
     © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
     © 1982–1988 VEB Messelektronik Dresden
@@ -524,7 +524,7 @@ Copyright:
     © 2000–2017 Ulrich Zander
 License: public-domain with JKCEMU exception
 Comment:
-    Authorship of differnet ROM and disk image content for the
+    Authorship of different ROM and disk image content for the
     .
     KC85/1, KC87:
         VEB Messelektronik Dresden
@@ -555,12 +555,12 @@ Comment:
     http://www.jens-mueller.org/jkcemu/z9001.html#software
     http://www.jens-mueller.org/jkcemu/z9001.html#disks
 
-Files: rom/zxspectrum/*
+Files: src/rom/zxspectrum/*
 Copyright:
     © 1982–1992 Amstrad plc
 License: public-domain with JKCEMU exception and amstrad-public-domain
 Comment:
-    Authorship of differnet ROM content for the
+    Authorship of different ROM content for the
     .
     ZX-Spectrum:
         Amstrad plc.  See below for details of the license agreement.
@@ -569,6 +569,11 @@ Comment:
     .
     Complete list of different ROM image content:
     http://www.jens-mueller.org/jkcemu/zxspectrum.html
+
+License: public-domain
+    Copying and distribution of parts of these files, with or without
+    modification, is permitted in any medium without royalty provided
+    the copyright notice and this notice are preserved.
 
 License: public-domain with JKCEMU exception
     Copying and distribution of these files, with or without modification,
