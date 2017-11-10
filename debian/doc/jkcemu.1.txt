@@ -80,7 +80,7 @@ FUNCTION OVERVIEW
     Start the `JKCEMU file browsing tool`.
 
 ``--fc`` | ``--fileconverter``
-    Start the `JKCEMU file convertion tool`.
+    Start the `JKCEMU file conversion tool`.
 
 ``--ff`` | ``--findfiles``
     Start the `JKCEMU file search and finding tool`.
@@ -434,12 +434,12 @@ JKCEMU file browsing tool
 
 This will start the **JKCEMU file browsing tool**.
 
-JKCEMU file convertion tool
+JKCEMU file conversion tool
 ---------------------------
 
 | |command| ``--fc`` | ``--fileconverter`` [ `FILE` ]
 
-This will start the **JKCEMU file convertion tool**.
+This will start the **JKCEMU file conversion tool**.
 
 JKCEMU file search and finding tool
 -----------------------------------
