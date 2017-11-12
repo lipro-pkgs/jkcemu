@@ -1,0 +1,97 @@
+#! /bin/bash
+#
+# debian/repack
+# Part of the Debian package ‘jkcemu’.
+#
+# Copyright © 2017 Stephan Linz <linz@li-pro.net>
+# Copyright © 2010–2016 Ben Finney <bignose@debian.org>
+#
+# This is free software; you may copy, modify, and/or distribute this
+# work under the terms of the Apache License, version 2.0 as published
+# by the Apache Software Foundation. No warranty expressed or implied.
+# See the file ‘/usr/share/common-licenses/Apache-2.0’ for details.
+
+# Convert the pristine upstream source to the Debian upstream source.
+#
+# This program is designed for use with the ‘uscan(1)’ tool, as the
+# “action” parameter for the ‘debian/watch’ configuration file.
+
+# based on: https://wiki.debian.org/BenFinney/software/repack
+
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+program_dir="$(dirname "$(realpath --strip "$0")")"
+source "${program_dir}"/source_package_build.bash
+
+function usage() {
+    local progname=$(basename $0)
+    printf "$progname --upstream-version VERSION FILENAME\n"
+}
+
+if [ $# -ne 3 ] ; then
+    usage
+    exit 1
+fi
+
+upstream_version="$2"
+downloaded_file="$3"
+
+target_filename="${upstream_tarball_basename}.tar.xz"
+target_working_file="${working_dir}/${target_filename}"
+target_file="$(dirname "${downloaded_file}")/${target_filename}"
+
+repack_dir="${working_dir}/${upstream_dirname}"
+
+printf "Unpacking pristine upstream source ‘${downloaded_file}’:\n"
+
+extract_ziparchive_to_working_dir "${downloaded_file}"
+
+upstream_source_dirname=$(ls -1 "${working_dir}")
+upstream_source_dir="${working_dir}/${upstream_source_dirname}"
+
+printf "Repackaging upstream source from ‘${upstream_source_dir}’ to ‘${repack_dir}’:\n"
+
+mv "${upstream_source_dir}" "${repack_dir}"
+
+printf "Removing non-DFSG-free files:\n"
+
+nonfree_fileglobs=(
+        # Third-party compiler in non-source form, and related files.
+
+        # Auto-generated files are non-source form.
+
+        # Compiled files are non-source form.
+
+        # Cached downloaded third-party data files.
+
+        )
+
+if [ ${#nonfree_fileglobs[@]} -ne 0 ] ; then
+    for fileglob in "${nonfree_fileglobs[@]}" ; do
+        rm -v "${repack_dir}"/$fileglob
+    done
+else
+    printf "SKIP: empty list\n"
+fi
+
+printf "Rebuilding DFSG-free upstream source tarball:\n"
+
+archive_working_dirname_to_tarball "${upstream_dirname}" "${target_working_file}"
+
+printf "Moving completed upstream tarball to ‘${target_file}’:\n"
+
+rm -v "${downloaded_file}"
+mv "${target_working_file}" "${target_file}"
+
+printf "Done.\n"
+
+
+# Local variables:
+# coding: utf-8
+# mode: shell-script
+# indent-tabs-mode: nil
+# End:
+# vim: fileencoding=utf-8 filetype=bash expandtab :

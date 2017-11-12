@@ -1,0 +1,62 @@
+Source: jkcemu
+Section: otherosfs
+Priority: optional
+Maintainer: Stephan Linz <linz@li-pro.net>
+Build-Depends: debhelper (>= 9), javahelper (>= 0.43)
+Build-Depends-Indep: default-jdk (>= 1:1.7), ant, python-docutils
+Standards-Version: 3.9.8
+Homepage: http://www.jens-mueller.org/jkcemu/
+Vcs-Git: https://github.com/lipro-pkgs/jkcemu.git
+Vcs-Browser: https://github.com/lipro-pkgs/jkcemu
+
+Package: jkcemu
+Architecture: all
+Depends: ${java:Depends}, ${misc:Depends}
+Recommends: ${java:Recommends}
+Description: Java KC-Emulator
+ JKCEMU is an integrated emulator application that allows one to
+ run most of the old home and minicomputer operating systems made
+ in the GDR. The emulation supports a number of additional hardware,
+ e.g. floppy disk drives, extended graphic modules, Joysticks and
+ specific network and USB adapters.
+ .
+ Supported computers:
+  - A5105 (BIC, ALBA PC)
+  - AC1 and AC1-2010
+  - BCS3
+  - C-80
+  - HC900
+  - Huebler/Evert-MC
+  - Huebler-Grafik-MC
+  - KC85/1
+  - KC85/2
+  - KC85/3
+  - KC85/4
+  - KC85/5
+  - KC87
+  - KC compact
+  - Kramer-MC
+  - LC-80
+  - LLC1
+  - LLC2
+  - PC/M
+  - Poly-Computer 880
+  - Schachcomputer SC2
+  - SLC1
+  - VCS80
+  - Z1013
+  - Z9001
+  - ZX-Spectrum
+ .
+ JKCEMU can also be used as an emulator of a Z80 custom computer
+ with the following user-defined properties:
+  - up to 64k RAM, pre-loaded from file
+  - up to 64k ROM, pre-loaded from file
+  - dedicated reset start address (Boot-ROM)
+  - screen output with frame buffer in RAM
+  - customized character generator, default is DOS codepage 437
+  - keyboard over PIO or SIO
+  - standard I/O: one of PIO, SIO, CTC
+  - special I/O: one of KCNet and VDIP (USB)
+  - Floppy Disk Controller with up to 4 drives
+  - Hard Disk Controller: GIDE

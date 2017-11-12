@@ -1,0 +1,128 @@
+=============================================
+Building the Debian source package for jkcemu
+=============================================
+
+Pristine upstream source contains non-DFSG-free files
+=====================================================
+
+The pristine upstream source may contain obfuscated files, that are
+thereby not appropriate for use as source files. This violates DFSG §2.
+
+The ‘debian/repack’ program will removes those files to create the Debian
+upstream source tarball.
+
+The ‘debian/watch’ configuration specifies that ‘uscan --download’ will
+re-pack the pristine upstream tarball by running ‘debian/repack’.
+
+
+Package maintenance in VCS
+==========================
+
+The ‘debian/control’ file declares the VCS repository used for
+tracking the Debian package maintenance work.
+
+
+VCS branches for package maintenance
+------------------------------------
+
+The source for the Debian packaging is managed in these conventional
+Git branches:
+
+* master: The current released code base.
+* packaging: Debian packaging development branch.
+* upstream: Upstream source code base, as imported from tarballs.
+* pristine-tar: Metadata for reproducibly generating upstream tarball.
+
+
+Work on a release in VCS
+------------------------
+
+* Ensure the ‘upstream’ branch contains the correct upstream source.
+
+* Ensure the ‘pristine-tar’ branch contains the corresponding metadata
+  for the pristine upstream source tarball.
+
+* In the ‘packaging’ branch, create a new Debian changelog entry.
+
+  Because the release is not complete, many aspects have not been
+  decided and should not be recorded in the VCS:
+
+  * The target destination (in the header) is “UNRELEASED”.
+
+  * The person and timestamp of the release is undecided, so should be
+    empty: the signature line should have no content, just the “ --”
+    leader.
+
+* While working on the package, temporarily finalise the signature
+  line for testing the build.
+
+  This ephemeral state should not be part of the VCS history, though,
+  so do not commit that finalised changelog entry; revert it to the
+  above state to continue development.
+
+
+Build the source package from VCS
+---------------------------------
+
+* Ensure the ‘packaging’ branch contains all the changes that are
+  intended for the release to Debian.
+
+* Until the work is ready for release, do not commit a finalised
+  Debian changelog entry. The changelog entry should be in the state
+  described in “Work on a release in VCS”, above.
+
+  This correctly leaves the decision of which destination for the
+  upload, who uploads and when, to the point in time where that
+  decision is made: the time of finalising the release.
+
+* Rebase a working branch, e.g. ‘wip/packaging/0.9.7-1’, from the
+  HEAD of ‘packaging’.
+
+* In this branch, finalise the ‘debian/changelog’:
+
+  * Set the target distribution, e.g. “unstable”.
+
+  * Set the signature line containing the correct person and timestamp,
+    e.g. “Stephan Linz <linz@li-pro.net>  Thu, 09 Nov 2017 18:09:48 +0100”.
+
+  * Commit the finalised changelog with a commit message of the form
+    “Finalise release “0.9.7-1”.”
+
+* Test the source package in ‘master’:
+
+  * Merge the ‘upstream’ branch to ‘master’, with the commit message
+    “Merge upstream version “0.9.7”.”.
+
+  * Merge – but *do not yet* commit – the work-in-progress release
+    branch ‘wip/packaging/0.9.7-1’, into ‘master’.
+
+  * Build the source package from the resulting working tree.
+
+  * Test the source package by building it in a Sbuild or Pbuilder
+    environment, with all Lintian checks enabled.
+
+* Upload the successfully-built source package to Debian.
+
+* Only when the package builds satisfactorily from the merged working
+  tree in ‘master’:
+
+  * Commit the merged release to ‘master’, with the commit message of
+    the form “Merge Debian packaging for release “0.9.7-1”.”.
+
+  * Create and sign a tag for the release, ‘debian/0.9.7-1’ with
+    the commit message “Debian release “0.9.7-1.”.
+
+* Prepare the ‘packaging’ branch for ongoing work:
+
+  * Switch to the ‘packaging’ branch.
+
+  * Fast-forward merge the finalised changelog from
+    ‘wip/packaging/0.9.7-1’.
+
+  * Delete the work-in-progress branch ‘wip/packaging/0.9.7-1’.
+
+  * Optionally: Create a new work-in-progress for an upcoming release,
+    as described in “Work on a release in VCS”, above.
+
+
+ -- Stephan Linz <linz@li-pro.net>  Sun, 05 Nov 2017 20:09:15 +0100

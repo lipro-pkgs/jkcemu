@@ -1,0 +1,30 @@
+=================
+jkcemu for Debian
+=================
+
+:Author: Stephan Linz <linz@li-pro.net>
+:Last-Updated: 2017-11-06
+
+Packages
+========
+
+There are no hints or notes regarding this package -- not yet.
+
+Command-line programs
+=====================
+
+The Debian “jkcemu” source package provides the command-line program
+by the following names:
+
+* For Debian's default Java version, the program `/usr/bin/jkcemu`.
+
+Man pages are in section 1 under the corresponding names.
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    End:
+    vim: fileencoding=utf-8 filetype=rst :

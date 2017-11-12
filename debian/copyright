@@ -1,0 +1,674 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Debianized-By: Stephan Linz <linz@li-pro.net>
+Debianized-Date: Sun, 05 Nov 2017 20:09:15 +0100
+Upstream-Name: JKCEMU - Kleincomputer-Emulator
+Upstream-contact: Jens Mueller <jens@mueller-franke.de>
+Source: http://www.jens-mueller.org/jkcemu/download.html
+    The pristine upstream source may contain obfuscated files, that are
+    thereby not appropriate for use as source files. This violates DFSG §2.
+    .
+    The 'debian/repack' program will removes those files to create the Debian
+    upstream source tarball.
+    .
+    The orig.tar.xz is just repacked Debian upstream source tarball
+    (currently without changes). See section get-orig-source in 'debian/rules'
+    file and array nonfree_fileglobs in 'debian/repack' file for details.
+
+Files: *
+Copyright:
+    © 2008–2017 Jens Mueller <jens@mueller-franke.de>
+License: GPL-3+
+License-Grant:
+    This program is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or (at your
+    option) any later version.
+    .
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+    for more details.
+    .
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+Files: src/jkcemu/disk/CopyQMDisk.java
+Copyright:
+    © 2001–2016 John Elliott <seasip.webmaster@gmail.com>
+    © 2005 Per Ola Ingvarsson
+    © 2012–2017 Jens Mueller <jens@mueller-franke.de>
+License: GPL-2+
+License-Grant:
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; either version 2 of the License, or (at your
+    option) any later version.
+    .
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+    for more details.
+    .
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+Comment:
+    Information about the CopyQM-Format and the CRC table content derived
+    from the LIBDSK project. Distributed under GPL-2+ license. See file
+    doc/COPYING for detail in the libdsk-1.4.2 source package:
+    http://www.seasip.info/Unix/LibDsk/libdsk-1.4.2.tar.gz
+
+Files: src/jkcemu/image/LZWEncoder.java
+Copyright:
+    © 1984 Spencer W. Thomas
+    © 1984 Jim McKie
+    © 1984 Steve Davies
+    © 1984 Ken Turkowski
+    © 1984 James A. Woods
+    © 1984 Joe Orost
+    © 1989 David Rowley <mgardi@watdcsu.waterloo.edu>
+    © 2012–2017 Jens Mueller <jens@mueller-franke.de>
+License: public-domain
+License-Grant:
+    Portions of code of these files Copyright 1984 by Spencer W. Thomas,
+    James A. Woods and David Rowley and others. Copying and distribution
+    of parts of these files, with or without modification, is permitted
+    in any medium without royalty provided the copyright notice and this
+    notice are preserved.
+Comment:
+    The LZW encoder is required to create animated GIF files (screen
+    recordings) based on the LZW encoding on GIFENCOD by David Rowley.
+    Rowley, in turn, adapted the LZW compression code from classic Unix
+    compress (LZW) by Spencer W. Thomas and James A. Woods and others,
+    which used techniques described in IEEE Computer, June 1984.
+    .
+    http://ieeexplore.ieee.org/document/1659158/
+    .
+    Thanks to the previous authors of the Lempel-Ziv-Welch (LZW) compressor.
+    .
+    ftp://ftp.ucsd.edu/pub/compress.c
+    .
+    compress.c - File compression ala IEEE Computer, June 1984.
+    .
+    Authors: Spencer W. Thomas (decvax!harpo!utah-cs!utah-gr!thomas)
+             Jim McKie (decvax!mcvax!jim)
+             Steve Davies (decvax!vax135!petsd!peora!srd)
+             Ken Turkowski (decvax!decwrl!turtlevax!ken)
+             James A. Woods (decvax!ihnp4!ames!jaw)
+             Joe Orost (decvax!vax135!petsd!joe)
+    .
+    Thanks to the previous author of the GIF modifications.
+    .
+    http://web.mit.edu/graphics/src/xfe-v1.0/gifencod.c
+    http://web.mit.edu/graphics/src/xfe-v1.0/gifcompr.c
+    .
+    gifencod.c - GIF Image compression routines
+    .
+    Lempel-Ziv compression based on 'compress'.  GIF modifications by
+    David Rowley.
+
+Files: debian/*
+Copyright:
+    © 2016–2017 Stephan Linz <linz@li-pro.net>
+License: Apache-2
+License-Grant:
+    This is free software; you may copy, modify and/or distribute this work
+    under the terms of the Apache License, version 2.0 as published by the
+    Apache Software Foundation. No warranty expressed or implied.
+
+Files: src/disks/a5105/*
+       src/rom/a5105/*
+Copyright:
+    © 1989–1990 VEB Messelektronik Dresden
+    © 1989 Dr. Hans-Juergen Gatsche
+    © 1988 Harald Saegert
+    © 2001–2014 Ulrich Zander
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM and disk image content
+    .
+    A5105 (BIC, ALBA PC):
+        VEB Messelektronik Dresden
+        Dr. Hans-Juergen Gatsche (RBASIC programs)
+        Harald Saegert (RBASIC programs)
+        Ulrich Zander (driver adaptations)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/a5105.html#software
+    http://www.jens-mueller.org/jkcemu/a5105.html#disks
+
+Files: src/rom/ac1/*
+Copyright:
+    © 1983–1989 Frank Heyder
+    © 1988–1990 Eckhard Ludwig
+    © 2006–2010 Andreas Suske
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM image content for the
+    .
+    AC1 and AC1-2010:
+        Frank Heyder (monitor program 3.1 and MiniBASIC)
+        Eckhard Ludwig (SCCH software)
+        Andreas Suske (FDC program and ROM bank management)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/ac1.html#software
+
+Files: src/rom/bcs3/*
+Copyright:
+    © 1984–1987 Dipl.-Math. Eckhard Schiller
+    © 1986–1987 Frank Pruefer, Torsten Musiol
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    BCS 3:
+        Dipl.-Math. Eckhard Schiller
+        Frank Pruefer (S/P-BASIC V3.3)
+        Torsten Musiol (machine code editor)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/bcs3.html#software
+
+Files: src/rom/c80/*
+Copyright:
+    © 1986 Joachim Czepa
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    C-80:
+        Joachim Czepa
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/c80.html#software
+
+Files: src/rom/customsys/*
+Copyright:
+    © 2016–2017 Jens Mueller <jens@mueller-franke.de>
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    customized system:
+        Jens Mueller
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/customsys.html#screen
+
+Files: src/rom/huebler/*
+Copyright:
+    © 1984–1985 Klaus-Peter Evert †
+    © 1984–1988 Bernd Huebler
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    Huebler/Evert-MC:
+        Klaus-Peter Evert (electronica 227/228)
+        Bernd Huebler (electronica 227/228)
+    .
+    Huebler-Grafik-MC:
+        Bernd Huebler (BASIC computer with graphic)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/hemc.html
+    http://www.jens-mueller.org/jkcemu/hgmc.html#2
+
+Files: src/disks/kc85/*
+       src/rom/kc85/*
+Copyright:
+    © 1984–1989 VEB Mikroelektronik Muehlhausen
+    © 1985–1988 University Rostock
+    © 1985–1987 IRIMS Moscow
+    © 1992–2010 Mario Leubner
+    © 2007–2016 Ralf Kaestner
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM and disk image content for the
+    .
+    HC900:
+        VEB Mikroelektronik Muehlhausen
+    .
+    KC85/2...5:
+        VEB Mikroelektronik Muehlhausen
+        Mario Leubner (CAOS 4.5, EDAS, D004 ROM V3.2/V3.3, USB software)
+    .
+    KCNet:
+        Ralf Kaestner (KCnet software)
+    .
+    MicroDOS:
+        VEB Mikroelektronik Muehlhausen
+        University Rostock, Institute for Socialist Economic Management
+        IRIMS Moscow, International Research Institute for Management Sciences
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/kc85.html#software
+    http://www.jens-mueller.org/jkcemu/kc85.html#disks
+
+Files: src/disks/kccompact/*
+       src/rom/kccompact/*
+Copyright:
+    © 1985–1990 Amstrad plc
+    © 1989–1990 VEB Mikroelektronik Muehlhausen
+    © 1985–1988 University Rostock
+    © 1985–1987 IRIMS Moscow
+License: public-domain with JKCEMU exception and amstrad-public-domain
+Comment:
+    Authorship of different ROM and disk image content for the
+    .
+    KC-compact:
+        VEB Mikroelektronik Muehlhausen
+        Amstrad plc. (parts cloned from the Amstrad CPC6128)
+    .
+    CPC6128:
+        Amstrad plc.  See below for details of the license agreement.
+    .
+    MicroDOS:
+        VEB Mikroelektronik Muehlhausen
+        University Rostock, Institute for Socialist Economic Management
+        IRIMS Moscow, International Research Institute for Management Sciences
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/kccompact.html#fdcrom
+    http://www.jens-mueller.org/jkcemu/kccompact.html#disks
+
+Files: src/rom/kramermc/*
+Copyright:
+    © 1987–1989 Manfred Kramer <dl2kmk@darc.de>
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    Kramer-MC:
+        Manfred Kramer
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/kramermc.html#software
+
+Files: src/rom/lc80/*
+Copyright:
+    © 1982–1987 VEB Mikroelektronik Erfurt
+    © 1989–1991 Eckart Buschendorf
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    LC-80:
+        VEB Mikroelektronik Erfurt
+        Eckart Buschendorf (LC-80.2 monitor program)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/lc80.html#software
+
+Files: src/rom/llc1/*
+Copyright:
+    © 1984–1985 Dr. Gerd Maudrich
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    LLC1:
+        Dr. Gerd Maudrich
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/llc1.html#software
+
+Files: src/rom/llc2/*
+Copyright:
+    © 1984–1985 Dr. Gerd Maudrich
+    © 1988–1990 Eckhard Ludwig
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    LLC2:
+        Dr. Gerd Maudrich
+        Eckhard Ludwig (SCCH software)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/llc2.html#software
+
+Files: src/disks/nanos/*
+       src/rom/nanos/*
+Copyright:
+    © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
+    © 1985–1990 VEB Datenverarbeitungszentrum Rostock
+    © 1985–1990 School of Engineering for Seafaring, Warnemuende/Wustrow
+    © 2011–2016 Heiko Poppe <hpoppe@web.de>
+    © 2016–2017 Klaus Wilfling
+    © 2016–2017 Jens Mueller <jens@mueller-franke.de>
+License: public-domain with JKCEMU exception and lineo-cpm-osl
+Comment:
+    Authorship of different ROM and disk image content for the
+    .
+    NANOS:
+        School of Engineering for Seafaring, Warnemuende/Wustrow
+    .
+    EPOS:
+        VEB Datenverarbeitungszentrum Rostock
+        Digital Research Inc., Dr. Gary A. Kildall (parts cloned from CP/M)
+    .
+    CP/M:
+        Digital Research Inc., Dr. Gary A. Kildall -- Sources for CP/M 2.2
+        in Assembly language were provided by “The Unofficial CP/M Web Site”
+        See below for details of the license agreement.
+    .
+    CP/M File-Commander:
+        Heiko Poppe
+    .
+    SETCOLOR for EPOS:
+        Klaus Wilfling (adaptations)
+        Jens Mueller (adaptations)
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/nanos.html#software
+    http://www.jens-mueller.org/jkcemu/nanos.html#disks
+
+Files: src/disks/pcm/*
+       src/rom/pcm/*
+Copyright:
+    © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
+    © 1986–1989 Academy of Sciences of the GDR
+    © 1988–1991 Prof. Dr. Albrecht Mugler <dl7nn@darc.de>
+    © 1988–1991 Herbert Mathes
+License: public-domain with JKCEMU exception and lineo-cpm-osl
+Comment:
+    Authorship of different ROM and disk image content for the
+    .
+    PC/M:
+        Prof. Dr. Albrecht Mugler
+        Herbert Mathes
+    .
+    CP/V:
+        Prof. Dr. Albrecht Mugler
+        Digital Research Inc., Dr. Gary A. Kildall (parts cloned from CP/M)
+    .
+    CP/A:
+        Academy of Sciences of the GDR, Berlin
+        Digital Research Inc., Dr. Gary A. Kildall (parts cloned from CP/M)
+    .
+    CP/M:
+        Digital Research Inc., Dr. Gary A. Kildall -- Sources for CP/M 2.2
+        in Assembly language were provided by “The Unofficial CP/M Web Site”
+        See below for details of the license agreement.
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/pcm.html#software
+    http://www.jens-mueller.org/jkcemu/pcm.html#disks
+
+Files: src/rom/poly880/*
+Copyright:
+    © 1982–1986 VEB Polytechnik Karl-Marx-Stadt
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    Poly-Computer 880:
+        VEB Polytechnik Karl-Marx-Stadt
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/poly880.html#software
+
+Files: src/rom/sc2/*
+Copyright:
+    © 1981–1983 VEB Mikroelektronik Erfurt
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    Schachcomputer SC2:
+        VEB Mikroelektronik Erfurt
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/sc2.html#etc
+
+Files: src/rom/slc1/*
+Copyright:
+    © 1989 Dr. Dieter Scheuschner
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    SLC1:
+        Dr. Dieter Scheuschner
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/slc1.html#software
+
+Files: src/rom/vcs80/*
+Copyright:
+    © 1983–1984 Dipl.-Math. Eckhard Schiller
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM content for the
+    .
+    VCS 80:
+        Dipl.-Math. Eckhard Schiller
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/vcs80.html#software
+
+Files: src/disks/z1013/*
+       src/rom/z1013/*
+Copyright:
+    © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
+    © 1984–1990 VEB Robotron-Elektronik Riesa
+    © 1987–1989 Dr. Rainer Brosig
+    © 2008–2011 Jens Mueller <jens@mueller-franke.de>
+License: public-domain with JKCEMU exception and lineo-cpm-osl
+Comment:
+    Authorship of different ROM and disk image content for the
+    .
+    Z1013:
+        VEB Robotron-Elektronik Riesa
+        Digital Research Inc., Dr. Gary A. Kildall (parts cloned from CP/M)
+        Dr. Rainer Brosig (extended monitor program and CP/M)
+        Jens Mueller (extended monitor program)
+    .
+    CP/M:
+        Digital Research Inc., Dr. Gary A. Kildall -- Sources for CP/M 2.2
+        in Assembly language were provided by “The Unofficial CP/M Web Site”
+        See below for details of the license agreement.
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/z1013.html#software
+    http://www.jens-mueller.org/jkcemu/z1013.html#disks
+
+Files: src/disks/z9001/*
+       src/rom/z9001/*
+Copyright:
+    © 1978–1980 Digital Research Inc., Dr. Gary A. Kildall
+    © 1982–1988 VEB Messelektronik Dresden
+    © 1986–1989 Academy of Sciences of the GDR
+    © 1989 Dr. Frank Schwarzenberg
+    © 1990 Christian Schiewe
+    © 2004–2017 Volker Pohlers
+    © 2000–2017 Ulrich Zander
+License: public-domain with JKCEMU exception
+Comment:
+    Authorship of different ROM and disk image content for the
+    .
+    KC85/1, KC87:
+        VEB Messelektronik Dresden
+        Dr. Frank Schwarzenberg (CP/A)
+        Christian Schiewe (80 character driver)
+        Ulrich Zander (driver adaptations)
+        Volker Pohlers (demos, driver, and adaptations)
+    .
+    Z9001:
+        VEB Messelektronik Dresden
+        Dr. Frank Schwarzenberg (CP/A)
+        Christian Schiewe (80 character driver)
+        Ulrich Zander (driver adaptations)
+        Volker Pohlers (demos, driver, and adaptations)
+    .
+    CP/A:
+        Academy of Sciences of the GDR, Berlin
+        Digital Research Inc., Dr. Gary A. Kildall (parts cloned from CP/M)
+    .
+    CP/M:
+        Digital Research Inc., Dr. Gary A. Kildall -- Sources for CP/M 2.2
+        in Assembly language were provided by “The Unofficial CP/M Web Site”
+        See below for details of the license agreement.
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM and disk image content:
+    http://www.jens-mueller.org/jkcemu/z9001.html#software
+    http://www.jens-mueller.org/jkcemu/z9001.html#disks
+
+Files: src/rom/zxspectrum/*
+Copyright:
+    © 1982–1992 Amstrad plc
+License: public-domain with JKCEMU exception and amstrad-public-domain
+Comment:
+    Authorship of different ROM content for the
+    .
+    ZX-Spectrum:
+        Amstrad plc.  See below for details of the license agreement.
+    .
+    Complete list at: http://www.jens-mueller.org/jkcemu/license.html
+    .
+    Complete list of different ROM image content:
+    http://www.jens-mueller.org/jkcemu/zxspectrum.html
+
+License: public-domain
+    Copying and distribution of parts of these files, with or without
+    modification, is permitted in any medium without royalty provided
+    the copyright notice and this notice are preserved.
+
+License: public-domain with JKCEMU exception
+    Copying and distribution of these files, with or without modification,
+    is permitted in any medium without royalty provided the copyright notice
+    and this notice are preserved only in context of JKCEMU. Any use of
+    these files outside of JKCEMU or outside a purely private, non-commercial
+    environment must be clarified with the authors or their legal successors
+    in case of doubt. Any use of these files outside of JKCEMU in commercial
+    environment must be clarified with the authors or their legal successors
+    in any case.
+
+License: amstrad-public-domain
+    Amstrad plc. have kindly given their permission for the redistribution of
+    their copyrighted material but retain that copyright.
+
+License: lineo-cpm-osl
+    LICENSE AGREEMENT FOR THE CP/M MATERIAL
+    .
+    Copied from: http://www.cpm.z80.de/license.html
+    .
+    License agreement for the CP/M material presented on this site,
+    “The Unofficial CP/M Web Site”
+    .
+    Please note: The Caldera license agreement found in this place before is no
+                 longer valid.
+    .
+    Subject:     Re: Unofficial CP/M Website/licensing of CP/M material
+    To:          gaby@gaby.de
+    Date sent:   Fri, 19 Oct 2001 10:36:31 -0600
+    .
+    Let this email represent a right to use, distribute, modify, enhance and
+    otherwise make available in a nonexclusive manner the CP/M technology as
+    part of the “Unofficial CP/M Web Site” with its maintainers, developers
+    and community.
+    .
+    I further state that as Chairman and CEO of Lineo, Inc. that I have the
+    right to do offer such a license.
+    .
+    Lineo and its affiliates, partners and employees make no warranties of
+    any kind with regards to this technology and its usefulness or lack
+    thereof.
+    .
+    ---
+    Bryan Sparks
+    CEO   Lineo, Inc.
+    http://www.lineo.com
+    .
+    PRESS ANNOUNCEMENT ABOUT THE LICENSE AGREEMENT FOR THE CP/M MATERIAL
+    .
+    “The Register” (UK) is reporting on 26 Nov 2001 at 09:55
+    https://www.theregister.co.uk/2001/11/26/cp_m_collection_is_back/
+    .
+    “CP/M collection is back online with an Open Source licence”
+    .
+    “... It was Tim Olmstead's personal wish to shut down the Unofficial
+         CP/M web site after his death. Respecting this, I will do so
+         tonight. Unfortunately there are still no news from Caldera/Lineo,
+         whom I asked for a new license (Tim's license was personalized). ...”
+    .
+    “... The site was down only a few weeks. On October 19th, Lineo
+         effectively cancelled the old Caldera license by emailing this
+         notice to (Gaby) Chaudry, which is posted on the Unofficial
+         CP/M site: ...”
+    .
+    (see the full text with the license agreement above)
+    .
+    “... So the CP/M software appears quite Open Source now, available
+         for use, modification, and redistribution by anyone who chooses
+         to do so.”
+    .
+    “The Computer History Museum” (USA) is reporting on 01 Oct 2014
+    http://www.computerhistory.org/atchm/early-digital-research-cpm-source-code/
+    .
+    “... We are releasing scanned printer listings and/or machine-readable
+         source code for four early versions of CP/M dating from 1975
+         to 1979. ...”
+    .
+    “... This material is provided for non-commercial use only. ...”
+
+License: GPL-2+
+    On Debian systems, the complete text of version 2 of the GNU General
+    Public License can be found in ‘/usr/share/common-licenses/GPL-2’.
+
+License: GPL-3+
+    On Debian systems, the complete text of version 3 of the GNU General
+    Public License can be found in ‘/usr/share/common-licenses/GPL-3’.
+
+License: Apache-2
+    On Debian systems, the complete text of version 2.0 of the Apache License
+    can be found in ‘/usr/share/common-licenses/Apache-2.0’.
+
+
+# Local variables:
+# coding: utf-8
+# mode: debian-copyright
+# fill-column: 78
+# End:
+# vim: fileencoding=utf-8 textwidth=78 :

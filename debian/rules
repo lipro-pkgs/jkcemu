@@ -1,0 +1,137 @@
+#!/usr/bin/make -f
+#
+# debian/rules
+# Part of the Debian ‘jkcemu’ package.
+#
+# Copyright © 2017 Stephan Linz <linz@li-pro.net>
+# Copyright © 2010–2016 Ben Finney <bignose@debian.org>
+#
+# This is free software; you may copy, modify, and/or distribute this
+# work under the terms of the Apache License, version 2.0 as published
+# by the Apache Software Foundation. No warranty expressed or implied.
+# See the file ‘/usr/share/common-licenses/Apache-2.0’ for details.
+
+# based on: https://notabug.org/bignose/debian_python-coverage
+
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+# Put depended upon jars in here
+# export CLASSPATH=
+
+DISTRIBUTION_NAME = jkcemu
+
+package_working_root = debian
+package_install_root = debian/${DISTRIBUTION_NAME}
+package_document_root = debian/${DOCDIR}
+
+DOCDIR = doc
+MANPAGE_SUFFIX = .1
+manpage_tempfile_suffix = ${MANPAGE_SUFFIX}.tmp
+jkcemu_manpage = jkcemu${MANPAGE_SUFFIX}
+jkcemu_manpage_path = $(addprefix ${DOCDIR}/,${jkcemu_manpage})
+GENERATED_DIRS += ${DOCDIR}
+
+INSTALL = install
+
+# Send HTTP traffic to the “discard” service during packaging actions.
+export http_proxy = http://127.0.1.1:9/
+export https_proxy = ${http_proxy}
+
+RST_SUFFIX = .txt
+RST2MAN = rst2man
+
+
+%:
+	dh $@ --with javahelper --buildsystem=ant
+
+
+override_dh_auto_build:
+	$(Q)dh_auto_build -pjkcemu --buildsystem=ant -- jar
+
+
+override_dh_installman:
+	$(Q)dh_installman
+
+override_dh_installman: manpage-aliases
+
+
+override_dh_clean:
+	$(Q)dh_clean
+	$(Q)$(RM) -r -- ${GENERATED_DIRS}
+
+
+${GENERATED_DIRS}:
+	$(INSTALL) -m 755 -d "$@"
+
+
+.PHONY: manpage-aliases
+manpage-aliases: ${jkcemu_manpage_path}
+
+${DOCDIR}/${jkcemu_manpage}: ${DOCDIR}
+
+${DOCDIR}/%${MANPAGE_SUFFIX}: ${package_document_root}/%${MANPAGE_SUFFIX}
+	$(INSTALL) -m 644 "$<" "$@"
+
+%${MANPAGE_SUFFIX}: %${manpage_tempfile_suffix}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)cat \
+	    ${package_document_root}/manpage_encoding_declaration.UTF-8 \
+	    "$<" > "$@"
+
+%${manpage_tempfile_suffix}: %${MANPAGE_SUFFIX}${RST_SUFFIX}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)$(RST2MAN) "$<" > "$@"
+
+
+.PHONY: get-packaged-orig-source
+get-packaged-orig-source:
+	$(uscan-download-source) --download-current-version
+
+# Policy §4.9 strongly recommends the ‘get-orig-source’ target:
+# “This target is optional, but providing it if possible is a good idea.”
+#
+# This target is an anomaly: per Policy §4.9, it fetches the *latest*
+# upstream source, regardless of this package's version. To fetch the
+# upstream source corresponding to this package's *declared* version
+# in ‘debian/changelog’, use ‘get-packaged-orig-source’ instead.
+.PHONY: get-orig-source
+get-orig-source:
+	$(uscan-download-source)
+
+get-orig-source get-packaged-orig-source: http_proxy =
+get-orig-source get-packaged-orig-source: makefile_dir = $(abspath $(dir $(firstword ${MAKEFILE_LIST})))
+get-orig-source get-packaged-orig-source: package_dir = $(abspath $(dir ${makefile_dir}))
+
+define uscan-download-source
+	uscan --noconf --verbose \
+	    --force-download \
+	    --rename \
+	    --destdir=$(CURDIR) \
+	    --check-dirname-level=0 ${package_dir}
+endef # uscan-download-source
+
+
+ifeq ($(DH_VERBOSE),1)
+  quiet =
+  Q =
+  VO = -v
+else
+  quiet=quiet_
+  Q = @
+  VO =
+endif
+
+       dh_echo := :
+ quiet_dh_echo := echo
+silent_dh_echo := :
+dh_echo := $($(quiet)dh_echo)
+
+
+# Local variables:
+# mode: makefile
+# coding: utf-8
+# End:
+# vim: filetype=make fileencoding=utf-8 :
