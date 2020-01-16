@@ -1,5 +1,6 @@
 /*
  * (c) 2008-2017 Jens Mueller
+ * (c) 2014-2017 Stephan Linz
  *
  * Kleincomputer-Emulator
  *
@@ -40,26 +41,45 @@ public class PCM extends EmuSys implements
   public static final String SYSTEXT     = "PC/M";
   public static final String PROP_PREFIX = "jkcemu.pcm.";
 
-  public static final String PROP_AUTO_LOAD_BDOS = "auto_load_bdos";
+  public static final String PROP_BDOS_PREFIX    = "bdos.";
+  public static final String PROP_AUTOLOAD       = "autoload";
   public static final String PROP_GRAPHIC        = "graphic";
   public static final String VALUE_GRAPHIC_80X24 = "80x24";
   public static final String VALUE_GRAPHIC_64X32 = "64x32";
 
   public static final boolean DEFAULT_SWAP_KEY_CHAR_CASE = true;
 
-  private static FloppyDiskInfo disk64x16 = new FloppyDiskInfo(
+  private static FloppyDiskInfo disk64x16v330 = new FloppyDiskInfo(
 			"/disks/pcm/pcmsys330_64x16.dump.gz",
-			"PC/M Boot-Diskette (64x16 Zeichen)",
+			"PC/M v3.30 Boot-Diskette (64x16 Zeichen)",
 			2, 2048, true );
 
-  private static FloppyDiskInfo disk80x24 = new FloppyDiskInfo(
+  private static FloppyDiskInfo disk80x24v330 = new FloppyDiskInfo(
 			"/disks/pcm/pcmsys330_80x24.dump.gz",
-			"PC/M Boot-Diskette (80x24 Zeichen)",
+			"PC/M v3.30 Boot-Diskette (80x24 Zeichen)",
+			2, 2048, true );
+
+  private static FloppyDiskInfo disk64x16v331 = new FloppyDiskInfo(
+			"/disks/pcm/pcmsys331_64x16.dump.gz",
+			"PC/M v3.31 Boot-Diskette (64x16 Zeichen)",
+			2, 2048, true );
+
+  private static FloppyDiskInfo disk80x24v331 = new FloppyDiskInfo(
+			"/disks/pcm/pcmsys331_80x24.dump.gz",
+			"PC/M v3.31 Boot-Diskette (80x24 Zeichen)",
+			2, 2048, true );
+
+  private static FloppyDiskInfo disk80x24ssrc = new FloppyDiskInfo(
+			"/disks/pcm/pcmsys_src.dump.gz",
+			"PC/M Systemquellen (Boot-Diskette f\u00FCr 80x24)",
 			2, 2048, true );
 
   private static final FloppyDiskInfo[] availableFloppyDisks = {
-							disk64x16,
-							disk80x24 };
+							disk64x16v330,
+							disk80x24v330,
+							disk64x16v331,
+							disk80x24v331,
+							disk80x24ssrc };
 
   private static byte[] bdos              = null;
   private static byte[] romRF64x16        = null;
@@ -68,6 +88,8 @@ public class PCM extends EmuSys implements
   private static byte[] pcmFontBytes64x16 = null;
   private static byte[] pcmFontBytes80x24 = null;
 
+  private byte[]            bdosBytes;
+  private String            bdosFile;
   private byte[]            fontBytes;
   private byte[]            romBytes;
   private String            romFile;
@@ -93,6 +115,8 @@ public class PCM extends EmuSys implements
   public PCM( EmuThread emuThread, Properties props )
   {
     super( emuThread, props, PROP_PREFIX );
+    this.bdosBytes  = null;
+    this.bdosFile   = null;
     this.romSize    = 0x2000;
     this.fontBytes  = null;
     this.romBytes   = null;
@@ -246,6 +270,13 @@ public class PCM extends EmuSys implements
     boolean rv = EmuUtil.getProperty(
 			props,
 			EmuThread.PROP_SYSNAME ).equals( SYSNAME );
+    if( rv ) {
+      rv = TextUtil.equals(
+		this.bdosFile,
+		EmuUtil.getProperty(
+			props,
+			this.propPrefix + PROP_BDOS_PREFIX + PROP_FILE ) );
+    }
     if( rv ) {
       rv = TextUtil.equals(
 		this.romFile,
@@ -534,9 +565,9 @@ public class PCM extends EmuSys implements
     FloppyDiskInfo[] rv = null;
     if( this.fdc != null ) {
       if( this.mode80x24 ) {
-	rv = new FloppyDiskInfo[] { disk80x24 };
+	rv = new FloppyDiskInfo[] { disk80x24v330 };
       } else {
-	rv = new FloppyDiskInfo[] { disk64x16 };
+	rv = new FloppyDiskInfo[] { disk64x16v330 };
       }
     }
     return rv;
@@ -747,18 +778,10 @@ public class PCM extends EmuSys implements
     }
     if( EmuUtil.getBooleanProperty(
 			props,
-			this.propPrefix + PROP_AUTO_LOAD_BDOS,
+			this.propPrefix + PROP_BDOS_PREFIX + PROP_AUTOLOAD,
 			true ) )
     {
-      if( bdos == null ) {
-	bdos = readResource( "/rom/pcm/bdos.bin" );
-      }
-      if( bdos != null ) {
-	int addr = 0xD000;
-	for( int i = 0; (addr < 0x10000) && (i < bdos.length); i++ ) {
-	  this.emuThread.setRAMByte( addr++, bdos[ i ] );
-	}
-      }
+      loadBDOS( props );
     }
     if( this.fdc != null ) {
       this.fdc.reset( resetLevel == EmuThread.ResetLevel.POWER_ON );
@@ -1038,6 +1061,31 @@ public class PCM extends EmuSys implements
   }
 
 
+  private void loadBDOS( Properties props )
+  {
+    this.bdosFile  = EmuUtil.getProperty(
+			props,
+			this.propPrefix + PROP_BDOS_PREFIX + PROP_FILE );
+    this.bdosBytes = readRAMFile(
+			this.bdosFile,
+			0xE00,
+			"RAM-Datei f\u00FCr BDOS" );
+    if( this.bdosBytes == null ) {
+      if( bdos == null ) {
+	bdos = readResource( "/rom/pcm/bdos.bin" );
+      }
+      this.bdosBytes = bdos;
+    }
+    if( this.bdosBytes != null ) {
+      int addr = 0xD000;
+      for( int i = 0; (addr < 0x10000) &&
+		      (i < this.bdosBytes.length); i++ ) {
+	this.emuThread.setRAMByte( addr++, this.bdosBytes[ i ] );
+      }
+    }
+  }
+
+
   private void loadFont( Properties props )
   {
     this.fontBytes = readFontByProperty(
@@ -1093,7 +1141,7 @@ public class PCM extends EmuSys implements
 	}
       } else {
 	if( romRF64x16 == null ) {
-	  romRF64x16 = readResource( "/rom/pcm/pcmsys210_64x16.bin" );
+	  romRF64x16 = readResource( "/rom/pcm/pcmsys211_64x16.bin" );
 	}
 	this.romBytes = romRF64x16;
       }
