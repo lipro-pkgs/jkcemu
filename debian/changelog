@@ -4,6 +4,7 @@ jkcemu (0.9.7-2cpm4l1) UNRELEASED; urgency=low
   * debian/control: Extend package description (computer names).
   * debian/jkcemu.desktop: Add more keywords for users desktop.
   * debian/doc/jkcemu.1.txt: Add short global options in man page.
+  * debian/TODO.Debian: Remeber to extend sections in man page.
 
  --
 
