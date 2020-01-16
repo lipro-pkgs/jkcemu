@@ -2,10 +2,22 @@ To Do list for Debian packaging
 ###############################
 
 :Author: Stephan Linz <linz@li-pro.net>
-:Last-Updated: 2017-11-09
+:Last-Updated: 2020-01-16
 
 To Do
 =====
+
+* Extend man page sections for:
+
+  * JKCEMU programmer calculation tool
+  * JKCEMU Floppy Disk image creation tool
+  * JKCEMU Floppy Disk image inspection tool
+  * JKCEMU file browsing tool
+  * JKCEMU file conversion tool
+  * JKCEMU file search and finding tool
+  * JKCEMU hexadecimal file comparing tool
+  * JKCEMU hexadecimal file editing tool
+  * JKCEMU image viewing tool
 
 * Enable upstream for static code analysis (lint) using `jlint`
 

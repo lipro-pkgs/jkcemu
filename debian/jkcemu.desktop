@@ -8,4 +8,4 @@ Exec=/usr/bin/jkcemu
 Icon=jkcemu50x50
 Type=Application
 Categories=System;Emulator;
-Keywords=a5105;ac1;bcs3;c80;cpm;emulator;gdr;kc;kc85;kc87;kccompact;kleincomputer;kramermc;lc80;llc1;llc2;nanos;pcm;poly880;sc2;slc1;vcs80;z1013;z9001;zxspectrum;
+Keywords=a5105;ac1;bcs3;c80;cpm;emulator;gdr;hueblerevertmc;hueblergraphicmc;kc;kc85;kc87;kccompact;kleincomputer;kramermc;lc80;llc1;llc2;nanos;pcm;poly880;sc2;slc1;vcs80;z1013;z9001;zxspectrum;

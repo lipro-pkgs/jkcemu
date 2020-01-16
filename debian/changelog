@@ -1,3 +1,12 @@
+jkcemu (0.9.7-2cpm4l1) unstable; urgency=low
+
+  * debian/control: Extend package description (computer names).
+  * debian/jkcemu.desktop: Add more keywords for users desktop.
+  * debian/doc/jkcemu.1.txt: Add short global options in man page.
+  * debian/TODO.Debian: Remeber to extend sections in man page.
+
+ -- Stephan Linz <linz@li-pro.net>  Thu, 16 Jan 2020 12:24:33 +0100
+
 jkcemu (0.9.7-1) unstable; urgency=low
 
   * Initial release (Closes: #877241).
