@@ -1,6 +1,7 @@
 jkcemu (0.9.7-2cpm4l1) UNRELEASED; urgency=low
 
   * UNRELEASED
+  * debian/control: Extend package description (computer names).
 
  --
 
