@@ -7,7 +7,7 @@ an Z80 home and minicomputer emulator with sound/graphics
 ---------------------------------------------------------
 
 :Author: |author|
-:Date: 2017-11-06
+:Date: 2020-01-16
 :Copyright:
     Copyright © 2008–2017 Jens Mueller <jens@mueller-franke.de>
     Copyright © 2017 Stephan Linz <linz@li-pro.net>
@@ -26,8 +26,8 @@ SYNOPSIS
 
 | |command| [ `PROFILE` ]
 | |command| `FUNCTION` [ `OPTIONS` ... ]
-| |command| ``--help``
-| |command| ``--version``
+| |command| ``-h`` | ``--help`` | ``-?``
+| |command| ``-v`` | ``--version``
 
 
 DESCRIPTION
