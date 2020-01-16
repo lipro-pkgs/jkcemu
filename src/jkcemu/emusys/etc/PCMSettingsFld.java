@@ -1,5 +1,6 @@
 /*
  * (c) 2011-2016 Jens Mueller
+ * (c) 2014-2017 Stephan Linz
  *
  * Kleincomputer-Emulator
  *
@@ -26,6 +27,7 @@ import jkcemu.base.AbstractSettingsFld;
 import jkcemu.base.AutoInputSettingsFld;
 import jkcemu.base.AutoLoadSettingsFld;
 import jkcemu.base.EmuUtil;
+import jkcemu.base.RAMFileSettingsFld;
 import jkcemu.base.ROMFileSettingsFld;
 import jkcemu.base.SettingsFrm;
 import jkcemu.base.UserInputException;
@@ -42,6 +44,7 @@ public class PCMSettingsFld extends AbstractSettingsFld
   private JRadioButton         btnRF64x16;
   private JRadioButton         btnFDC64x16;
   private JRadioButton         btnFDC80x24;
+  private RAMFileSettingsFld   fldAltBDOS;
   private ROMFileSettingsFld   fldAltROM;
   private ROMFileSettingsFld   fldAltFont;
 
@@ -112,6 +115,13 @@ public class PCMSettingsFld extends AbstractSettingsFld
     gbcModel.gridy++;
     this.tabModel.add( new JSeparator(), gbcModel );
 
+    this.fldAltBDOS = new RAMFileSettingsFld(
+		settingsFrm,
+		propPrefix + PCM.PROP_BDOS_PREFIX,
+		"Alternative RAM-Datei f\u00FCr BDOS:" );
+    gbcModel.gridy++;
+    this.tabModel.add( this.fldAltBDOS, gbcModel );
+
     this.fldAltROM = new ROMFileSettingsFld(
 		settingsFrm,
 		propPrefix + PCM.PROP_ROM_PREFIX,
@@ -170,8 +180,9 @@ public class PCMSettingsFld extends AbstractSettingsFld
 			: PCM.VALUE_GRAPHIC_64X32 );
     EmuUtil.setProperty(
 		props,
-		this.propPrefix + PCM.PROP_AUTO_LOAD_BDOS,
+		this.propPrefix + PCM.PROP_BDOS_PREFIX + PCM.PROP_AUTOLOAD,
 		this.btnAutoLoadBDOS.isSelected() );
+    this.fldAltBDOS.applyInput( props, selected );
     this.fldAltROM.applyInput( props, selected );
     this.fldAltFont.applyInput( props, selected );
 
@@ -240,8 +251,10 @@ public class PCMSettingsFld extends AbstractSettingsFld
     this.btnAutoLoadBDOS.setSelected(
 		EmuUtil.getBooleanProperty(
 				props,
-				this.propPrefix + PCM.PROP_AUTO_LOAD_BDOS,
+				this.propPrefix + PCM.PROP_BDOS_PREFIX
+						+ PCM.PROP_AUTOLOAD,
 				true ) );
+    this.fldAltBDOS.updFields( props );
     this.fldAltROM.updFields( props );
     this.fldAltFont.updFields( props );
     updAutoLoadBDOSFieldEnabled();
@@ -256,5 +269,6 @@ public class PCMSettingsFld extends AbstractSettingsFld
   private void updAutoLoadBDOSFieldEnabled()
   {
     this.btnAutoLoadBDOS.setEnabled( this.btnRF64x16.isSelected() );
+    this.fldAltBDOS.setEnabled( this.btnRF64x16.isSelected() );
   }
 }
