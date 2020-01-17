@@ -1,3 +1,9 @@
+jkcemu (0.9.7+LPN201511-1cpm4l1) UNRELEASED; urgency=low
+
+  * New upstream version 0.9.7+LPN201511
+
+ --
+
 jkcemu (0.9.7-2cpm4l1) unstable; urgency=low
 
   * debian/control: Extend package description (computer names).
