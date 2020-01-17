@@ -1,0 +1,27 @@
+From e7080c3098b1b7ba39859972cbcd75f5f999372f Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Fri, 17 Jan 2020 22:10:07 +0100
+Subject: [PATCH 2/2] ANT: predef includeantruntime=false for javac
+
+Closes issue #6.
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ build.xml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/build.xml b/build.xml
+index bdb7972..79e0b3f 100644
+--- a/build.xml
++++ b/build.xml
+@@ -9,6 +9,10 @@
+   <property name="images"  location="${source}/images"/>
+   <property name="rom"     location="${source}/rom"/>
+ 
++  <presetdef name="javac">
++    <javac includeantruntime="false" />
++  </presetdef>
++
+   <target name="clean">
+     <delete dir="${build}"/>
+     <delete dir="${javadoc}"/>
