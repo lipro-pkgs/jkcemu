@@ -4,6 +4,7 @@ jkcemu (0.9.7+LPN201511-2cpm4l1) UNRELEASED; urgency=low
   * debian/jkcemu.manifest: Comment out the empty attribute
     "Debian-Java-Parameters:" to avoid side effects later on
     runtime systems with the binfmt/jarwrapper (Closes: #1).
+  * debian/patches: 0001: Add author's manifest attributes.
 
  --
 

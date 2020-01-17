@@ -1,0 +1,25 @@
+From e56de4cff01705c5885e853e421074e8a1ef9884 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Fri, 17 Jan 2020 19:04:34 +0100
+Subject: [PATCH] ANT: add author's manifest attributes
+
+Closes issue #5.
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ build.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.xml b/build.xml
+index 283bff4..bdb7972 100644
+--- a/build.xml
++++ b/build.xml
+@@ -36,7 +36,7 @@
+   </target>
+ 
+   <target name="jar" depends="compile">
+-    <jar destfile="${basedir}/jkcemu.jar" basedir="${build}">
++    <jar destfile="${basedir}/jkcemu.jar" basedir="${build}" manifest="${source}/Manifest.txt">
+       <manifest>
+         <attribute name="Built-By" value="${user.name}"/>
+         <attribute name="Main-Class" value="jkcemu.Main"/>
