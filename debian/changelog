@@ -1,8 +1,8 @@
-jkcemu (0.9.7+LPN201511-1cpm4l1) UNRELEASED; urgency=low
+jkcemu (0.9.7+LPN201511-1cpm4l1) unstable; urgency=low
 
   * New upstream version 0.9.7+LPN201511
 
- --
+ -- Stephan Linz <linz@li-pro.net>  Fri, 17 Jan 2020 00:58:26 +0100
 
 jkcemu (0.9.7-2cpm4l1) unstable; urgency=low
 
