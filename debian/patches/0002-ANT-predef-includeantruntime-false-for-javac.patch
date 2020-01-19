@@ -1,7 +1,7 @@
 From e7080c3098b1b7ba39859972cbcd75f5f999372f Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Fri, 17 Jan 2020 22:10:07 +0100
-Subject: [PATCH 2/2] ANT: predef includeantruntime=false for javac
+Subject: ANT: predef includeantruntime=false for javac
 
 Closes issue #6.
 

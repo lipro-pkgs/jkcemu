@@ -1,6 +1,12 @@
+jkcemu (0.9.7+LPN201511-3cpm4l1) unstable; urgency=low
+
+  * debian/patches: Rebase all patches from branch 'master' as
+    provided by: https://github.com/lipro-cpm4l/jkcemu
+
+ -- Stephan Linz <linz@li-pro.net>  Sun, 19 Jan 2020 19:02:32 +0100
+
 jkcemu (0.9.7+LPN201511-2cpm4l1) unstable; urgency=low
 
-  * UNRELEASED
   * debian/jkcemu.manifest: Comment out the empty attribute
     "Debian-Java-Parameters:" to avoid side effects later on
     runtime systems with the binfmt/jarwrapper (Closes: #1).

@@ -1,7 +1,7 @@
 From e56de4cff01705c5885e853e421074e8a1ef9884 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Fri, 17 Jan 2020 19:04:34 +0100
-Subject: [PATCH] ANT: add author's manifest attributes
+Subject: ANT: add author's manifest attributes
 
 Closes issue #5.
 
