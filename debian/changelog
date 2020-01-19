@@ -1,6 +1,8 @@
 jkcemu (0.9.7+LPN201511-3cpm4l1) UNRELEASED; urgency=low
 
   * UNRELEASED
+  * debian/patches: Rebase all patches from branch 'master' as
+    provided by: https://github.com/lipro-cpm4l/jkcemu
 
  --
 
